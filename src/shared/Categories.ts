@@ -9,7 +9,7 @@ interface Sublevel2 {
   sublevels?: Sublevel3[];
 }
 
-interface Sublevel {
+export interface Sublevel {
   id: number;
   name: string;
   sublevels?: Sublevel2[];
