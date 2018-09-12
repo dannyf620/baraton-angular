@@ -1,60 +1,5 @@
-/* You can add global styles to this file, and also import other style files */
-@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
-$fa-font-path : '../node_modules/font-awesome/fonts';
-@import '../node_modules/font-awesome/scss/font-awesome';
-body { 
-  padding: 0; 
-  margin: 0; 
-  font-family: Roboto, sans-serif; 
-  
-}
-
-
-$lt-gray: #ddd;
-$background-dark: #512DA8;
-$background-light: #9575CD;
-$background-pale: #D1C4E9;
-$primary-color-dark:   #512DA8;
-$primary-color:        #673AB7;
-$primary-color-light:  #D1C4E9;
-$primary-color-text:   #FFFFFF;
-$accent-color:         #FFC107;
-$primary-text-color:   #212121;
-$secondary-text-color: #757575;
-$divider-color:        #BDBDBD;
-
-@mixin zero-margin($pad-up-down, $pad-left-right) {
-    margin: 0px auto;
-    padding: $pad-up-down $pad-left-right;
-}
-
-#container-g{
-.background-primary {
-    background-color: $background-dark!important;
-  }
-.background-accent {
-    background-color: $accent-color!important;
-  }
-.text-floral-white {
-    color: floralwhite!important;
-}
-
-.flex-spacer {
-  flex: 1 1 auto;
-}
-
-.highlight {
-  background-color: $background-pale;
-  border: 1px solid $primary-color-dark;
-  z-index: 1;
-  transform: scale(1.01);
-}
-
-
-
-
 @import "helpers";
-// @import "fonts/clear-sans.css";
+@import "fonts/clear-sans.css";
 
 $field-width: 500px;
 $grid-spacing: 15px;
@@ -76,19 +21,18 @@ $game-container-background: #bbada0;
 
 $transition-speed: 100ms;
 
+html, body {
+  margin: 0;
+  padding: 0;
 
+  background: #faf8ef;
+  color: $text-color;
+  font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
+  font-size: 18px;
+}
 
-
-@include keyframes(move-up) {
-  0% {
-    top: 25px;
-    opacity: 1;
-  }
-  
-  100% {
-    top: -50px;
-    opacity: 0;
-  }
+body {
+  margin: 80px 0;
 }
 
 .heading {
@@ -102,6 +46,19 @@ h1.title {
   display: block;
   float: left;
 }
+
+@include keyframes(move-up) {
+  0% {
+    top: 25px;
+    opacity: 1;
+  }
+
+  100% {
+    top: -50px;
+    opacity: 0;
+  }
+}
+
 .scores-container {
   float: right;
   text-align: right;
@@ -183,7 +140,7 @@ hr {
   margin-bottom: 30px;
 }
 
-.container-g {
+.container {
   width: $field-width;
   margin: 0 auto;
 }
@@ -538,7 +495,7 @@ hr {
     margin-top: 15px;
   }
 
-  .container-g {
+  .container {
     width: $field-width;
     margin: 0 auto;
   }
@@ -589,5 +546,4 @@ hr {
       margin-top: 30px !important;
     }
   }
-}
 }

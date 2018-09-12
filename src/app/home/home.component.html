@@ -1,0 +1,27 @@
+<div class="container" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutAlign.gt-md="space-around center"
+  fxLayoutGap="10px">
+  <div *ngIf="bestProducts">
+
+
+
+
+
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
+      <mat-card class="card-picture" *ngFor="let picture of bestProducts">
+        <mat-card-title [ngClass]="{'unavailable': !picture.available}" fxLayout="row">
+          <span fxFlex="80%">{{picture.name}}</span>
+          <mat-icon>add_shopping_cart</mat-icon>
+          <mat-icon *ngIf="!picture.available">money_off</mat-icon>
+        </mat-card-title>
+        <mat-card-subtitle>{{picture.price}}</mat-card-subtitle>
+        <img mat-card-image src="../../assets/images/default.jpg">
+      </mat-card>
+    </div>
+
+  </div>
+
+  <div [hidden]="bestProducts">
+    <mat-spinner></mat-spinner>
+    <h4>Cargando...</h4>
+  </div>
+</div>

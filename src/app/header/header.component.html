@@ -1,0 +1,52 @@
+<mat-toolbar color="primary">
+  <span><img src="/assets/images/logo.png" height=30 width=41></span>
+  <a mat-button routerLink="/home" routerLinkActive="active"><span class="fa fa-home fa-lg"></span> Home</a>
+  <span class="flex-spacer"></span>
+  <div class="social">
+    <div class="ws-bag">
+      <mat-icon class="ws-choose" matBadge="{{cartItems.length}}" matBadgeSize="medium" matBadgePosition="above" matBadgeColor="warn"
+        [matMenuTriggerFor]="menu">shopping_cart</mat-icon>
+
+
+      <div class="ws-choose" [matMenuTriggerFor]="menu"> </div>
+      <mat-menu #menu="matMenu" xPosition="before" direction="center">
+        <div *ngIf="cartItems.length == 0;then cartempty else cart">
+        </div>
+        <ng-template #cartempty>
+
+          <div class="menu-item">Tu carrito esta vacío</div>
+          <p mat-menu-item class="ws-choose menu-item" (click)="navigate('')">
+            Seguir comprando
+            <i class="material-icons"> add_shopping_cart </i>
+          </p>
+        </ng-template>
+        <ng-template #cart>
+          <div>
+            <i class="material-icons"> shopping_cart </i>
+          </div>
+          <p class="menu-item">Tienes {{cartItems.length}} productos en tu carrito </p>
+          <p mat-menu-item class="menu-item">Ver carrito de compras</p>
+        </ng-template>
+      </mat-menu>
+    </div>
+    <a [href]="social.facebook"> <i class="fa fa-facebook fa-lg"></i></a>
+    <a [href]="social.google" target="_blank"> <i class="fa fa-google-plus fa-lg"></i> </a>
+    <a [href]="social.twitter" target="_blank"><i class="fa fa-twitter fa-lg"></i> </a>
+  </div>
+  <span class="flex-spacer"></span>
+  <a mat-button><span class="fa fa-sign-in fa-lg"></span> Ingresar</a>
+</mat-toolbar>
+
+<div class="container jumbotron" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutAlign.xs="start center"
+  fxLayoutAlign.sm="start center" fxLayoutAlign.gt-sm="center center" fxLayoutGap="10px">
+
+  <div fxFlex fxFlex.gt-sm="50%">
+    <h1>Baratón</h1>
+    <p>E Shop</p>
+  </div>
+  <div fxFlex fxFlex.gt-sm="20%">
+    <img src="/assets/images/logo.png" alt="Logo">
+  </div>
+  <div fxFlex></div>
+
+</div>
