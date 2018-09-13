@@ -18,7 +18,9 @@ $background-moredark: #4527A0;
     max-height: 165px;
   }
 }
-
+.spacer {
+  flex: 1 1 auto;
+}
 .active {
   background: $background-moredark;
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,9 +7,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  cartItems: any[]=[];
+  cartItems: any[] = [];
   @Input() social;
-  constructor(public route: Router) {    
+  @Output() openMenuEmitter = new EventEmitter();
+  constructor(public route: Router) {
   }
 
   ngOnInit() {
@@ -17,5 +18,8 @@ export class HeaderComponent implements OnInit {
   }
   navigate(page) {
 
+  }
+  openMenu() {
+    this.openMenuEmitter.emit('');
   }
 }

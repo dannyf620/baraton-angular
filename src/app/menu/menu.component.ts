@@ -1,3 +1,4 @@
+import { ProductsService } from './../services/products.service';
 import { Component, OnInit } from '@angular/core';
 import { ObservableMedia, MediaChange } from '@angular/flex-layout';
 import { Subscription } from 'rxjs';
@@ -16,8 +17,8 @@ export class MenuComponent implements OnInit {
   // overlap = false;
   social;
   watcher: Subscription;
-
-  constructor(media: ObservableMedia) {
+  categories: any[];
+  constructor(media: ObservableMedia, public producService: ProductsService) {
     this.social = {
       "facebook": "https://www.facebook.com/",
       "twitter": "https://www.twitter.com/",
@@ -33,9 +34,26 @@ export class MenuComponent implements OnInit {
       }
     });
   }
+  insetInSublevel(item) {
+    item.forEach(level => {
+      level.children = this.producService.getFromLevel(level.id);
 
-  ngOnInit() {
-
+      if (level.sublevels) {
+        this.insetInSublevel(level.sublevels);
+      }
+    });
   }
-
+  ngOnInit() {
+    this.categories = this.producService.getCategories();
+    // this.insetInSublevel(this.categories.sublevels);
+    this.categories.forEach((category) => {
+      // console.log(category.name, category.id, this.producService.getFromLevel(category.id));
+      // category.children=this.producService.getFromLevel(category.id);
+      this.insetInSublevel(category.sublevels);
+    });
+    // console.log(JSON.stringify(this.categories));
+  }
+  goCategori(cat,sub:boolean){
+    console.log(cat);
+  }
 }

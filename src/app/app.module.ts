@@ -1,3 +1,4 @@
+import { MenuItemComponent } from './menu/menu-item/menu-item.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { AngularMaterialModule } from './angular-material/angular-material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -12,6 +13,10 @@ import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { MenuComponent } from './menu/menu.component';
+import { ProductsComponent } from './products/products.component';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { CategoryComponent } from './category/category.component';
+
 
 @NgModule({
   declarations: [
@@ -21,7 +26,11 @@ import { MenuComponent } from './menu/menu.component';
     AboutComponent,
     ContactComponent,
     NotFoundComponent,
-    MenuComponent
+    MenuComponent,
+    ProductsComponent,
+    ProductDetailComponent,
+    MenuItemComponent,
+    CategoryComponent
   ],
   imports: [
     BrowserModule,
