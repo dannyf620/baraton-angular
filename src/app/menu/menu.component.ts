@@ -1,3 +1,4 @@
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProductsService } from './../services/products.service';
 import { Component, OnInit } from '@angular/core';
 import { ObservableMedia, MediaChange } from '@angular/flex-layout';
@@ -18,7 +19,9 @@ export class MenuComponent implements OnInit {
   social;
   watcher: Subscription;
   categories: any[];
-  constructor(media: ObservableMedia, public producService: ProductsService) {
+  constructor(media: ObservableMedia, public producService: ProductsService,
+    private route: ActivatedRoute,
+    private router: Router) {
     this.social = {
       "facebook": "https://www.facebook.com/",
       "twitter": "https://www.twitter.com/",
@@ -53,7 +56,7 @@ export class MenuComponent implements OnInit {
     });
     // console.log(JSON.stringify(this.categories));
   }
-  goCategori(cat,sub:boolean){
-    console.log(cat);
+  goCategori(cat, level: number) {
+    this.router.navigate(['/products', { cat: cat, level: level }]);
   }
 }

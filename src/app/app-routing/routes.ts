@@ -24,7 +24,8 @@ export const routes: Routes = [
       { path: 'overview', component: ProductsComponent },
       { path: 'overview-detail', component: ProductDetailComponent },
       { path: '', redirectTo: '/home', pathMatch: 'full' },
-      { path: 'category/:id/:subid', component: CategoryComponent } // [routerLink]="['/category', category.id]"
+      { path: 'products', component: ProductsComponent },
+      { path: 'category/:id', component: CategoryComponent } // [routerLink]="['/category', category.id]"
     ]
   },
   // { path: '', redirectTo: '/home', pathMatch: 'full' },

@@ -10,14 +10,14 @@ export class HeaderComponent implements OnInit {
   cartItems: any[] = [];
   @Input() social;
   @Output() openMenuEmitter = new EventEmitter();
-  constructor(public route: Router) {
+  constructor(public router: Router) {
   }
 
   ngOnInit() {
 
   }
   navigate(page) {
-
+    this.router.navigate([page])
   }
   openMenu() {
     this.openMenuEmitter.emit('');
