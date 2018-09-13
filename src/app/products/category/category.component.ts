@@ -1,5 +1,5 @@
-import { Category } from './../../shared/Categories';
-import { Component, OnInit } from '@angular/core';
+
+import { Component, OnInit, Input } from '@angular/core';
 import { Params, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
@@ -9,14 +9,12 @@ import { Location } from '@angular/common';
   styleUrls: ['./category.component.scss']
 })
 export class CategoryComponent implements OnInit {
-  category: Category;
+  @Input() categories;
   constructor(private route: ActivatedRoute,
     private location: Location) { }
 
   ngOnInit() {
-    const id = +this.route.snapshot.params['id'];
-    const id2 = +this.route.snapshot.params['subid'];
-    console.log(id, id2);
+
   }
   goBack(): void {
     this.location.back();

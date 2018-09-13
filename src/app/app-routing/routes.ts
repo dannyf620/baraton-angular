@@ -1,4 +1,4 @@
-import { CategoryComponent } from './../category/category.component';
+
 import { MenuComponent } from './../menu/menu.component';
 import { ProductDetailComponent } from './../product-detail/product-detail.component';
 import { ContactComponent } from './../contact/contact.component';
@@ -24,8 +24,7 @@ export const routes: Routes = [
       { path: 'overview', component: ProductsComponent },
       { path: 'overview-detail', component: ProductDetailComponent },
       { path: '', redirectTo: '/home', pathMatch: 'full' },
-      { path: 'products', component: ProductsComponent },
-      { path: 'category/:id', component: CategoryComponent } // [routerLink]="['/category', category.id]"
+      { path: 'products', component: ProductsComponent }      
     ]
   },
   // { path: '', redirectTo: '/home', pathMatch: 'full' },

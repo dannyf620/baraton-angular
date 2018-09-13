@@ -1,3 +1,5 @@
+import { CategoryComponent } from './products/category/category.component';
+
 import { MenuItemComponent } from './menu/menu-item/menu-item.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { AngularMaterialModule } from './angular-material/angular-material.module';
@@ -15,7 +17,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { MenuComponent } from './menu/menu.component';
 import { ProductsComponent } from './products/products.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
-import { CategoryComponent } from './category/category.component';
+
 
 
 @NgModule({
