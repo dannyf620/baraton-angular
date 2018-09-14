@@ -1,17 +1,47 @@
-
-
+<p>
+  {{filter.availability}}</p>
 <mat-card class="result">
-    <mat-card-content>
-      <h2 class="example-h2">Filtro</h2>
-  
-      <section class="example-section">
-          <mat-slide-toggle
-          class="example-margin"
-          color="accent"
-          [checked]="filter.availability">
+  <mat-card-content>
+    <h2 class="example-h2">Filtro</h2>
+
+    <section class="example-section">
+      <h3>Disponible</h3>
+      <mat-slide-toggle class="example-margin" color="accent" [checked]="filter.availability" (change)="toggleChange($event)">
         disponibles
       </mat-slide-toggle>
-      </section>
-    </mat-card-content>
-  </mat-card>
-<app-category [categories]="categories" [filter]="{availability:filter.availability}"></app-category>
+    </section>
+    <h3>Precio</h3>
+    <mat-form-field class="price">
+      <input matInput placeholder="minimo" [(ngModel)]="filter.range[0]" type="number" class="example-right-align">
+      <span matPrefix>$&nbsp;</span>
+      <span matSuffix>
+        <button mat-icon-button (click)="filter.range[0]=null">
+          <mat-icon>close</mat-icon>
+        </button>
+      </span>
+    </mat-form-field>
+    <mat-form-field class="price">
+      <input matInput placeholder="maximo" [(ngModel)]="filter.range[1]" type="number" class="example-right-align">
+      <span matPrefix>$&nbsp;</span>
+      <span matSuffix>
+        <button mat-icon-button (click)="filter.range[1]=null">
+          <mat-icon>close</mat-icon>
+        </button>
+      </span>
+    </mat-form-field>
+    <h3>Precio</h3>
+    <mat-form-field color="accent">
+      <input matInput type="number" [(ngModel)]="filter.stock" placeholder="Cantidad" min="0">
+      <span matSuffix>
+        <button mat-icon-button (click)="filter.stock=null">
+          <mat-icon>close</mat-icon>
+        </button>
+      </span>
+    </mat-form-field>
+    <p>
+      <button (click)="makeFilter()" md-raised-button>Filtrar</button>
+    </p>
+  </mat-card-content>
+
+</mat-card>
+<app-category [categories]="categories" [filter]="{  availability:filter.availability,  range:[filter.range[0],filter.range[1]],  stock:filter.stock}"></app-category>

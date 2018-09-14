@@ -1,5 +1,5 @@
 import { ProductsService } from './../services/products.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { Params, ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { Location } from '@angular/common';
 import { ShareDataService } from '../services/share-data.service';
@@ -16,12 +16,14 @@ interface Filter {
 })
 export class ProductsComponent implements OnInit {
   categories;
-  filter:Filter={availability:false}
+  filter: Filter = { stock: null, availability: true, range: [null, null] }
+
   constructor(private route: ActivatedRoute,
     private location: Location,
     private router: Router,
     public shareService: ShareDataService,
-    public productsSevice: ProductsService) {
+    public productsSevice: ProductsService,
+    public _ngZone: NgZone) {
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
     }
@@ -30,7 +32,7 @@ export class ProductsComponent implements OnInit {
       if (evt instanceof NavigationEnd) {
         // trick the Router into believing it's last link wasn't previously loaded
         this.router.navigated = false;
-       
+
         window.scrollTo(0, 0);
       }
     });
@@ -48,5 +50,13 @@ export class ProductsComponent implements OnInit {
   }
   goBack(): void {
     this.location.back();
+  }
+  toggleChange(event) {
+    this.filter.availability = event.checked;
+  }
+  makeFilter() {
+    // this._ngZone.run(()=>{
+    //   console.log(this.filter);
+    // })
   }
 }

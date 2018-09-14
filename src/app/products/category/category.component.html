@@ -3,8 +3,8 @@
     <div fxLayout="row">
       <h1>{{category.name}}</h1>
     </div>
-    <div *ngIf="filter" class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
-      <mat-card class="card-picture" *ngFor="let picture of category.children|filterProduct:filter">
+    <div *ngIf="_filter" class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
+      <mat-card class="card-picture" *ngFor="let picture of category.children|filterProduct:_filter">
         <mat-card-title [ngClass]="{'unavailable': !picture.available}" fxLayout="row">
           <span fxFlex="80%">{{picture.name}}</span>
           <mat-icon>add_shopping_cart</mat-icon>
@@ -15,7 +15,9 @@
       </mat-card>
     </div>
     <br>
-    <app-category [categories]="category.sublevels"></app-category>
+    <div *ngIf="_filter">
+      <app-category [categories]="category.sublevels" [filter]="_filter"></app-category>
+    </div>
     <br>
   </div>
 </div>

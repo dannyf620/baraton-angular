@@ -18,6 +18,7 @@ import { MenuComponent } from './menu/menu.component';
 import { ProductsComponent } from './products/products.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { FilterProductPipe } from './pipes/filter-product.pipe';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -41,7 +42,8 @@ import { FilterProductPipe } from './pipes/filter-product.pipe';
     BrowserAnimationsModule,
     AngularMaterialModule,
     FlexLayoutModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
