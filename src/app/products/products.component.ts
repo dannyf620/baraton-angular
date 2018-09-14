@@ -3,6 +3,12 @@ import { Component, OnInit } from '@angular/core';
 import { Params, ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { Location } from '@angular/common';
 import { ShareDataService } from '../services/share-data.service';
+interface Filter {
+  availability?: boolean;
+  range?: number[];
+  stock?: number;
+}
+
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -10,6 +16,7 @@ import { ShareDataService } from '../services/share-data.service';
 })
 export class ProductsComponent implements OnInit {
   categories;
+  filter:Filter={availability:false}
   constructor(private route: ActivatedRoute,
     private location: Location,
     private router: Router,

@@ -5,10 +5,14 @@
 }
 .card-picture {
   max-width: 260px;
+  margin-top: 5px;
 }
 .container {
   flex-wrap:  wrap ;
 }
 .search-form {
   width: 90%;
+}
+.unavailable{
+  color: #fb4848;
 }

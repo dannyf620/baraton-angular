@@ -5,7 +5,7 @@
   </button>
   <div fxShow.lt-md="false" fxShow.gt-sm="true">
     <a mat-button routerLink="/home" routerLinkActive="active"><span class="fa fa-home fa-lg"></span> Home</a>
-    <a mat-button routerLink="/products" routerLinkActive="active"><span class="fa fa-shopping-cart  fa-lg"></span> Products</a>
+    <a mat-button (click)="goToProducts()" routerLink="/products" routerLinkActive="active"><span class="fa fa-shopping-cart  fa-lg"></span> Products</a>
 
   </div>
   <span class="spacer"></span>

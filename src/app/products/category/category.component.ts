@@ -10,6 +10,7 @@ import { Location } from '@angular/common';
 })
 export class CategoryComponent implements OnInit {
   @Input() categories;
+  @Input() filter;
   constructor(private route: ActivatedRoute,
     private location: Location) { }
 

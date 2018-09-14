@@ -1,3 +1,4 @@
+import { ShareDataService } from './../services/share-data.service';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -10,7 +11,8 @@ export class HeaderComponent implements OnInit {
   cartItems: any[] = [];
   @Input() social;
   @Output() openMenuEmitter = new EventEmitter();
-  constructor(public router: Router) {
+  constructor(public router: Router,
+    public shareService: ShareDataService) {
   }
 
   ngOnInit() {
@@ -21,5 +23,8 @@ export class HeaderComponent implements OnInit {
   }
   openMenu() {
     this.openMenuEmitter.emit('');
+  }
+  goToProducts() {
+    this.shareService.setCategorie(undefined);
   }
 }

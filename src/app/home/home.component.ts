@@ -1,7 +1,10 @@
+import { ShareDataService } from './../services/share-data.service';
 import { Product } from './../../shared/Products';
 import { Category, Sublevel } from './../../shared/Categories';
 import { ProductsService } from './../services/products.service';
 import { Component, OnInit } from '@angular/core';
+
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -21,15 +24,6 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.categories = this.producService.getCategories()
   }
-  printBySublevel(sublevel: Sublevel[]) {
-    if (sublevel) {
-      // console.log(sublevel);
-      sublevel.forEach(item => {
-        // console.log(item.name, item.id);
-        console.log(item.name, item.id, this.producService.getFromLevel(item.id));
-        this.printBySublevel(item.sublevels);
-      });
-    }
-  }
+  
  
 }

@@ -17,6 +17,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { MenuComponent } from './menu/menu.component';
 import { ProductsComponent } from './products/products.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { FilterProductPipe } from './pipes/filter-product.pipe';
 
 
 
@@ -32,7 +33,8 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
     ProductsComponent,
     ProductDetailComponent,
     MenuItemComponent,
-    CategoryComponent
+    CategoryComponent,
+    FilterProductPipe
   ],
   imports: [
     BrowserModule,
