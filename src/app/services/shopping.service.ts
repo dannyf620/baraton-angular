@@ -11,10 +11,11 @@ export class ShoppingService {
 
   productsRef = new BehaviorSubject<any>([]);
 
-  products: any = [];
-
-  constructor(private shareData:ShareDataService) {
-    this.products=this.shareData.getShoppingCart();
+  private products: any = [];
+  private shoPingCart;
+  constructor(private shareData: ShareDataService) {
+    
+    this.products = JSON.parse(localStorage.getItem('cart') || '[]');
     this.productsRef.next(this.products);
   }
   getCartProduct() {
@@ -23,7 +24,7 @@ export class ShoppingService {
 
   addToCart(product: Product, quantity: number) {
     //Check if product already added to array
-    console.log(this.products,product)
+    console.log(this.products, product)
     if (this.products.filter(e => e.item.id === product.id).length > 0) {
       this.products.forEach((e) => {
         if (e.item.id == product.id) {
@@ -36,11 +37,16 @@ export class ShoppingService {
         quantity: quantity
       });
     }
-    this.shareData.updateShopingCart(this.products);
+    this.saveShoppingCart();
     this.productsRef.next(this.products);
   }
   removeFromCart(product: Product) {
     this.products = this.products.filter(e => e.item.id != product.id);
     this.productsRef.next(this.products);
+  }
+
+  
+  private saveShoppingCart() {
+    localStorage.setItem('cart', JSON.stringify(this.products));
   }
 }

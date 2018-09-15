@@ -91,7 +91,7 @@
                     </mat-accordion>
                   </div>
 
-                  <button mat-button color="primary" *ngFor="let item of category2.children">
+                  <button mat-button color="primary"  (click)="buyElement(item)" *ngFor="let item of category2.children">
                     {{item.name}}
                   </button>
 
@@ -100,7 +100,7 @@
 
             </mat-accordion>
 
-            <button mat-button color="accent" *ngFor="let item of category.children">
+            <button mat-button color="accent" (click)="buyElement(item)" *ngFor="let item of category.children">
               {{item.name}}
             </button>
 

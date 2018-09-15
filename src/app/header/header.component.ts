@@ -19,7 +19,6 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.shoppingService.productsRef.subscribe((items) => {
-      console.log(items)
       this.cartItems = items;
     })
   }

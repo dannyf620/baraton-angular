@@ -17,7 +17,6 @@ export class HomeComponent implements OnInit {
     // console.log(" producto 58b5a5b1ef62cb996bb87c45: ", this.producService.getProduct("58b5a5b1ef62cb996bb87c45"))
     setTimeout(() => {
       this.bestProducts = this.producService.getHiProduct();
-      console.log(this.bestProducts);
     }, 500);
   }
 

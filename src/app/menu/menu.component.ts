@@ -1,3 +1,5 @@
+import { MatDialog } from '@angular/material';
+import { ProductDetailComponent } from './../product-detail/product-detail.component';
 import { ShareDataService } from './../services/share-data.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductsService } from './../services/products.service';
@@ -23,7 +25,8 @@ export class MenuComponent implements OnInit {
   constructor(media: ObservableMedia, public producService: ProductsService,
     private route: ActivatedRoute,
     private router: Router,
-    public shareService: ShareDataService) {
+    public shareService: ShareDataService,
+    public dialog: MatDialog) {
     this.social = {
       "facebook": "https://www.facebook.com/",
       "twitter": "https://www.twitter.com/",
@@ -62,5 +65,12 @@ export class MenuComponent implements OnInit {
     this.shareService.setCategorie([cat]);
     this.router.navigate(['/products']);
 
+  }
+  buyElement(product){
+    let shopRef = this.dialog.open(ProductDetailComponent, {width: '500px', height: '450px',data:product});
+
+    shopRef.afterClosed()
+      .subscribe(result => {
+      });
   }
 }
