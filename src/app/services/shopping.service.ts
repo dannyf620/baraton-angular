@@ -46,6 +46,7 @@ export class ShoppingService {
   makeShopping(){
     this.products=[];
     localStorage.removeItem('cart');
+    this.productsRef.next(this.products);
   }
   private saveShoppingCart() {
     localStorage.setItem('cart', JSON.stringify(this.products));
