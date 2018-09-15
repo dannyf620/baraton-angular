@@ -1,5 +1,5 @@
 import { ShoppingService } from './../services/shopping.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, NgZone, SimpleChanges } from '@angular/core';
 
 import { MatBottomSheetRef } from '@angular/material/bottom-sheet';
 import { MatBottomSheet, MatSnackBar } from '@angular/material';
@@ -9,18 +9,22 @@ import { MatBottomSheet, MatSnackBar } from '@angular/material';
   templateUrl: './shopping-cart.component.html',
   styleUrls: ['./shopping-cart.component.scss']
 })
-export class ShoppingCartComponent implements OnInit {
+export class ShoppingCartComponent implements OnChanges,OnInit {
   products;
   constructor(public shoppingService: ShoppingService,
     private bottomSheet: MatBottomSheet,
-
+    public _ngZone: NgZone,
     public snackBar: MatSnackBar
     // private bottoomSheetRef: MatBottomSheetRef
   ) { }
-
+  ngOnChanges(changes: SimpleChanges) {
+    console.log("solo cambios",changes);
+    this._ngZone.run(() => {
+      console.log("Cambia sub total",changes);
+    })
+  }
   ngOnInit() {
     this.products = this.shoppingService.getCartProduct();
-    console.log(this.products);
   }
   removeFromCart(item) {
     this.shoppingService.removeFromCart(item);
@@ -33,7 +37,6 @@ export class ShoppingCartComponent implements OnInit {
     console.log("ok");
     let sheetRef = this.bottomSheet.open(BottomConfirm);
     sheetRef.afterDismissed().subscribe((data) => {
-      console.log(data);
       this.shoppingService.makeShopping();
       this.products = this.shoppingService.getCartProduct();
       this.snackBar.openFromComponent(purchaseConfirm, {

@@ -23,8 +23,6 @@ export class ShoppingService {
   }
 
   addToCart(product: Product, quantity: number) {
-    //Check if product already added to array
-    console.log(this.products, product)
     if (this.products.filter(e => e.item.id === product.id).length > 0) {
       this.products.forEach((e) => {
         if (e.item.id == product.id) {
