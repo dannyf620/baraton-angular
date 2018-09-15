@@ -20,7 +20,7 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { FilterProductPipe } from './pipes/filter-product.pipe';
 import { FormsModule } from '@angular/forms';
 import { MyCartComponent } from './my-cart/my-cart.component';
-import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { ShoppingCartComponent, BottomConfirm, purchaseConfirm } from './shopping-cart/shopping-cart.component';
 
 
 
@@ -39,7 +39,9 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
     CategoryComponent,
     FilterProductPipe,
     MyCartComponent,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    BottomConfirm,
+    purchaseConfirm
   ],
   imports: [
     BrowserModule,
@@ -50,6 +52,7 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
     FormsModule
   ],
   providers: [],
+  entryComponents:[BottomConfirm,purchaseConfirm],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
