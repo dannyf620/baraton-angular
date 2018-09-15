@@ -1,3 +1,62 @@
-<p>
-  product-detail works!
-</p>
+<mat-toolbar mat-dialog-title color="primary">
+  <div *ngIf="data.available">
+    <h2>{{data.name | uppercase}}</h2>
+    <samp>{{data.price}}</samp>
+    <span class="flex-spacer"></span>
+    <button mat-button mat-dialog-close>&times;</button>
+  </div>
+  <div *ngIf="!data.available">
+    <h2>product not avilable </h2>
+  </div>
+</mat-toolbar>
+
+
+
+
+<form novalidate #shopForm="ngForm" *ngIf="!addedToCart" (ngSubmit)="addToCart()">
+  <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap>
+
+    <div class="card-picture" fxFlex="60"> <img src="../../assets/images/default.jpg" alt={{data.name}}>
+    </div>
+    <mat-list role="list" fxFlex="30">
+      <mat-list-item role="listitem" flexLayout="row">
+        <p matLine>
+          <span>quantity: </span>
+          <span>{{data.quantity}}</span>
+        </p>
+      </mat-list-item>
+      <mat-list-item role="listitem">
+        <p matLine>
+          <span>price: </span>
+          <span>{{data.price}}</span>
+        </p>
+      </mat-list-item>
+      <mat-list-item>
+        <div class="quantity" fxFlex>
+          <!-- <a mat-icon-button (click)="(quantity > 1) ? quantity =  quantity - 1 : quantity = 1 "> - </a> -->
+          <mat-form-field class="quantity-input">
+            <input matInput placeholder="Quantity" value="{{quantity}}" type="number" min="1" 
+            max="{{data.quantity}}" >
+          </mat-form-field>
+          <!-- <a mat-icon-button (click)="quantity =  quantity + 1"> + </a> -->
+        </div>
+      </mat-list-item>
+    </mat-list>
+  </div>
+
+  <mat-dialog-actions>
+    <span class="flex-spacer"></span>
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button *ngIf="data.available" type="submit" mat-button class="background-primary text-floral-white" [disabled]="shopForm.form.invalid">Add
+      to cart</button>
+  </mat-dialog-actions>
+</form>
+<div *ngIf="addedToCart">
+  <p>You have successfully added <b> {{data.name | uppercase}} </b>  to your cart.</p>
+  <mat-dialog-actions>
+    <span class="flex-spacer"></span>
+    <button mat-button mat-dialog-close >continue Shopping</button>
+    <button (click)="goToShoppingCart()" mat-button class="background-primary text-floral-white" >
+      Go to shpping Cart</button>
+  </mat-dialog-actions>
+</div>

@@ -4,7 +4,7 @@
       <h1>{{category.name}}</h1>
     </div>
     <div *ngIf="_filter" class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
-      <mat-card class="card-picture" *ngFor="let picture of category.children|filterProduct:_filter">
+      <mat-card  (click)="buyElement(picture)" class="card-picture" *ngFor="let picture of category.children|filterProduct:_filter">
         <mat-card-title [ngClass]="{'unavailable': !picture.available}" fxLayout="row">
           <span fxFlex="80%">{{picture.name}}</span>
           <mat-icon>add_shopping_cart</mat-icon>

@@ -19,6 +19,8 @@ import { ProductsComponent } from './products/products.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { FilterProductPipe } from './pipes/filter-product.pipe';
 import { FormsModule } from '@angular/forms';
+import { MyCartComponent } from './my-cart/my-cart.component';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 
 
 
@@ -35,7 +37,9 @@ import { FormsModule } from '@angular/forms';
     ProductDetailComponent,
     MenuItemComponent,
     CategoryComponent,
-    FilterProductPipe
+    FilterProductPipe,
+    MyCartComponent,
+    ShoppingCartComponent
   ],
   imports: [
     BrowserModule,

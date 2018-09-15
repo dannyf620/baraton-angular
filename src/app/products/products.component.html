@@ -15,7 +15,7 @@
       <input matInput placeholder="minimo" [(ngModel)]="filter.range[0]" type="number" class="example-right-align">
       <span matPrefix>$&nbsp;</span>
       <span matSuffix>
-        <button mat-icon-button (click)="filter.range[0]=null">
+        <button mat-icon-button *ngIf="filter.range[0]" (click)="filter.range[0]=null">
           <mat-icon>close</mat-icon>
         </button>
       </span>
@@ -24,7 +24,7 @@
       <input matInput placeholder="maximo" [(ngModel)]="filter.range[1]" type="number" class="example-right-align">
       <span matPrefix>$&nbsp;</span>
       <span matSuffix>
-        <button mat-icon-button (click)="filter.range[1]=null">
+        <button mat-icon-button *ngIf="filter.range[1]" (click)="filter.range[1]=null">
           <mat-icon>close</mat-icon>
         </button>
       </span>
@@ -33,7 +33,7 @@
     <mat-form-field color="accent">
       <input matInput type="number" [(ngModel)]="filter.stock" placeholder="Cantidad" min="0">
       <span matSuffix>
-        <button mat-icon-button (click)="filter.stock=null">
+        <button mat-icon-button *ngIf="filter.stock" (click)="filter.stock=null">
           <mat-icon>close</mat-icon>
         </button>
       </span>

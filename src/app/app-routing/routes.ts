@@ -9,7 +9,7 @@ import { HomeComponent } from '../home/home.component';
 import { AboutComponent } from '../about/about.component';
 import { NotFoundComponent } from '../not-found/not-found.component';
 import { ProductsComponent } from '../products/products.component';
-
+import { ShoppingCartComponent } from '../shopping-cart/shopping-cart.component';
 export const routes: Routes = [
   // { path: 'home', component: HomeComponent, children:[
   //   {path:'overview', component: ProductsComponent},
@@ -24,7 +24,8 @@ export const routes: Routes = [
       { path: 'overview', component: ProductsComponent },
       { path: 'overview-detail', component: ProductDetailComponent },
       { path: '', redirectTo: '/home', pathMatch: 'full' },
-      { path: 'products', component: ProductsComponent }      
+      { path: 'products', component: ProductsComponent }      ,
+      {path:'cart',component:ShoppingCartComponent}
     ]
   },
   // { path: '', redirectTo: '/home', pathMatch: 'full' },

@@ -1,3 +1,4 @@
+import { ShoppingService } from './../services/shopping.service';
 import { ShareDataService } from './../services/share-data.service';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
@@ -12,11 +13,15 @@ export class HeaderComponent implements OnInit {
   @Input() social;
   @Output() openMenuEmitter = new EventEmitter();
   constructor(public router: Router,
-    public shareService: ShareDataService) {
+    public shareService: ShareDataService,
+    public shoppingService: ShoppingService) {
   }
 
   ngOnInit() {
-
+    this.shoppingService.productsRef.subscribe((items) => {
+      console.log(items)
+      this.cartItems = items;
+    })
   }
   navigate(page) {
     this.router.navigate([page])
