@@ -19,7 +19,7 @@
     <div class="card-picture" fxFlex="60"> <img src="../../assets/images/default.jpg" alt={{data.name}}>
     </div>
     <mat-list role="list" fxFlex="30">
-      <mat-list-item role="listitem" flexLayout="row">
+      <mat-list-item role="listitem">
         <p matLine>
           <span>quantity: </span>
           <span>{{data.quantity}}</span>
@@ -31,14 +31,14 @@
           <span>{{data.price}}</span>
         </p>
       </mat-list-item>
-      <mat-list-item>
-        <div class="quantity" fxFlex>
-          <!-- <a mat-icon-button (click)="(quantity > 1) ? quantity =  quantity - 1 : quantity = 1 "> - </a> -->
-          <mat-form-field class="quantity-input">
-            <input matInput placeholder="Quantity" value="{{quantity}}" type="number" min="1" 
+      <mat-list-item style="height: 120px;">
+        <div class="quantity" fxLayout="column">
+          <a fxFlex mat-icon-button (click)="quantity =  quantity + 1"> + </a>
+          <mat-form-field fxFlex class="quantity-input">
+            <input matInput placeholder="Quantity" [(ngModel)]="quantity" name="quantity" required type="number" min="1" 
             max="{{data.quantity}}" >
           </mat-form-field>
-          <!-- <a mat-icon-button (click)="quantity =  quantity + 1"> + </a> -->
+          <a fxFlex mat-icon-button (click)="(quantity > 1) ? quantity =  quantity - 1 : quantity = 1 "> - </a>
         </div>
       </mat-list-item>
     </mat-list>
