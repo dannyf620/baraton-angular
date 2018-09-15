@@ -1,0 +1,23 @@
+<div *ngIf="categories && categories.length>0">
+  <div *ngFor="let category of categories">
+    <div fxLayout="row">
+      <h1>{{category.name}}</h1>
+    </div>
+    <div *ngIf="_filter" class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
+      <mat-card  (click)="buyElement(picture)" class="card-picture" *ngFor="let picture of category.children|filterProduct:_filter">
+        <mat-card-title [ngClass]="{'unavailable': !picture.available}" fxLayout="row">
+          <span fxFlex="80%">{{picture.name}}</span>
+          <mat-icon>add_shopping_cart</mat-icon>
+          <mat-icon *ngIf="!picture.available">money_off</mat-icon>
+        </mat-card-title>
+        <mat-card-subtitle>{{picture.price}}</mat-card-subtitle>
+        <img mat-card-image src="../../../assets/images/default.jpg">
+      </mat-card>
+    </div>
+    <br>
+    <div *ngIf="_filter">
+      <app-category [categories]="category.sublevels" [filter]="_filter"></app-category>
+    </div>
+    <br>
+  </div>
+</div>

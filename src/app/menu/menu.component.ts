@@ -1,3 +1,7 @@
+import { MatDialog } from '@angular/material';
+import { ProductDetailComponent } from './../product-detail/product-detail.component';
+import { ShareDataService } from './../services/share-data.service';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProductsService } from './../services/products.service';
 import { Component, OnInit } from '@angular/core';
 import { ObservableMedia, MediaChange } from '@angular/flex-layout';
@@ -18,7 +22,11 @@ export class MenuComponent implements OnInit {
   social;
   watcher: Subscription;
   categories: any[];
-  constructor(media: ObservableMedia, public producService: ProductsService) {
+  constructor(media: ObservableMedia, public producService: ProductsService,
+    private route: ActivatedRoute,
+    private router: Router,
+    public shareService: ShareDataService,
+    public dialog: MatDialog) {
     this.social = {
       "facebook": "https://www.facebook.com/",
       "twitter": "https://www.twitter.com/",
@@ -45,15 +53,24 @@ export class MenuComponent implements OnInit {
   }
   ngOnInit() {
     this.categories = this.producService.getCategories();
-    // this.insetInSublevel(this.categories.sublevels);
-    this.categories.forEach((category) => {
-      // console.log(category.name, category.id, this.producService.getFromLevel(category.id));
-      // category.children=this.producService.getFromLevel(category.id);
-      this.insetInSublevel(category.sublevels);
-    });
+    this.insetInSublevel(this.categories);
+    // this.categories.forEach((category) => {
+    //   // console.log(category.name, category.id, this.producService.getFromLevel(category.id));
+    //   // category.children=this.producService.getFromLevel(category.id);
+    //   this.insetInSublevel(category.sublevels);
+    // });
     // console.log(JSON.stringify(this.categories));
   }
-  goCategori(cat,sub:boolean){
-    console.log(cat);
+  goCategori(cat, level: number) {
+    this.shareService.setCategorie([cat]);
+    this.router.navigate(['/products']);
+
+  }
+  buyElement(product){
+    let shopRef = this.dialog.open(ProductDetailComponent, {width: '500px', height: '450px',data:product});
+
+    shopRef.afterClosed()
+      .subscribe(result => {
+      });
   }
 }

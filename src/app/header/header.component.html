@@ -1,10 +1,12 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" class="header">
   <span><img src="/assets/images/logo.png" height=30 width=41></span>
   <button mat-icon-button (click)="openMenu()" fxShow.sm="true" fxShow.gt-sm="false">
     <mat-icon>menu</mat-icon>
   </button>
   <div fxShow.lt-md="false" fxShow.gt-sm="true">
-    <a mat-button routerLink="/" routerLinkActive="active"><span class="fa fa-home fa-lg"></span> Home</a>
+    <a mat-button routerLink="/home" routerLinkActive="active"><span class="fa fa-home fa-lg"></span> Home</a>
+    <a mat-button (click)="goToProducts()" routerLink="/products" routerLinkActive="active"><span class="fa fa-shopping-cart  fa-lg"></span> Products</a>
+
   </div>
   <span class="spacer"></span>
   <div class="social">
@@ -30,7 +32,7 @@
             <i class="material-icons"> shopping_cart </i>
           </div>
           <p class="menu-item">Tienes {{cartItems.length}} productos en tu carrito </p>
-          <p mat-menu-item class="menu-item">Ver carrito de compras</p>
+          <a  routerLink="/cart" mat-menu-item class="menu-item">Ver carrito de compras</a>
         </ng-template>
       </mat-menu>
     </div>
@@ -40,7 +42,7 @@
   </div>
   <span class="flex-spacer"></span>
 
-  <a mat-button><span class="fa fa-sign-in fa-lg"></span> Ingresar</a>
+  <a mat-button><span class="fa fa-sign-in fa-lg"></span> Login</a>
 </mat-toolbar>
 
 <div class="container jumbotron" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutAlign.xs="start center"

@@ -24,11 +24,20 @@ export class ProductsService {
   }
   private getNextRandom(list: any[]): number {
     let numb = Math.round(Math.random() * PRODUCTS.length);
-    if (list.includes(numb) && list.length !=0 && this.recursiveCounter < this.recursiveLimit) {
+    if (list.includes(numb) && list.length != 0 && this.recursiveCounter < this.recursiveLimit) {
       this.recursiveCounter++;
       return this.getNextRandom(list);
     }
     return numb;
+  }
+  private insetInSublevel(item) {
+    item.forEach(level => {
+      level.children = this.getFromLevel(level.id);
+
+      if (level.sublevels) {
+        this.insetInSublevel(level.sublevels);
+      }
+    });
   }
   getHiProduct(): Product[] {
 
@@ -40,5 +49,10 @@ export class ProductsService {
       RandomList.push(num);
     }
     return bestProductos;
+  }
+  getMatch() {
+    const cat = this.getCategories();
+    this.insetInSublevel(cat);
+    return cat;
   }
 }

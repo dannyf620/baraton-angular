@@ -1,0 +1,66 @@
+<div class="container" *ngIf="products.length > 0">
+  <h3>
+    Your cart
+  </h3>
+  <div fxLayout="row" class="list-item" fxLayout.xs="column" *ngFor="let item of products">
+    <div flex fxFlex.gt-sm="70%">
+
+      <mat-list role="list">
+          <mat-list-item role="listitem" fxxLayout="row">
+              <p matLine>
+                <span>Product: </span>
+                <span>{{item.item.name}}</span>
+              </p>
+            </mat-list-item>
+        <mat-list-item role="listitem" fxxLayout="row">
+          <p matLine>
+            <span>quantity: </span>
+            <span>{{item.item.quantity}}</span>
+          </p>
+        </mat-list-item>
+        <mat-list-item role="listitem">
+          <p matLine>
+            <span>price: </span>
+            <span>{{item.item.price}}</span>
+          </p>
+        </mat-list-item>
+      </mat-list>
+    </div>
+    <div flex fxFlex.gt-sm="30%">
+      <div fxLayout="column" fxLayoutAlign="center start">
+        <div class="picture">
+          <img src="../../assets/images/default.jpg" alt={{item.item.name}}>
+          <button mat-raised-button color="warn" (click)="removeFromCart(item.item)">Remove </button>
+        </div>
+        <div class="quantity" fxFlex>
+          <!-- <a mat-icon-button (click)="(quantity > 1) ? quantity =  quantity - 1 : quantity = 1 "> - </a> -->
+          <mat-form-field class="quantity-input">
+            <input matInput placeholder="Quantity" value="{{item.quantity}}" type="number" min="1" max="{{item.item.quantity}}">
+          </mat-form-field>
+          <!-- <a mat-icon-button (click)="quantity =  quantity + 1"> + </a> -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <div fxLayout="row" class="padding">
+    
+    <span>
+        <h3>
+            Subtotal
+          </h3>
+      $ {{getSubtotal()}}
+    </span>
+    <span class="flex-spacer"></span>
+    <button (click)="buy()" mat-button class="background-primary text-floral-white">
+      Make the purchase
+    </button>
+  </div>
+</div>
+
+
+<div *ngIf="products.length == 0">
+  <h3>Your cart</h3>
+  <h6>
+    Your Cart is empty
+  </h6>
+</div>

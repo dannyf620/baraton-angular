@@ -3,6 +3,12 @@ import { MatListModule, MatIconModule, MatButtonModule, MatMenuModule, MatInputM
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatExpansionModule } from '@angular/material/expansion';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
+
 @NgModule({
   imports: [
     MatListModule,
@@ -16,7 +22,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatBadgeModule,
     MatProgressSpinnerModule,
     MatSidenavModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatBottomSheetModule
   ],
   exports: [
     MatListModule,
@@ -30,7 +37,12 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatBadgeModule,
     MatProgressSpinnerModule,
     MatSidenavModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatSlideToggleModule,
+    MatCheckboxModule,
+    MatTooltipModule,
+    MatSnackBarModule,
+    MatBottomSheetModule
   ],
   declarations: []
 })

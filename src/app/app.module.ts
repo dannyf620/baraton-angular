@@ -1,3 +1,5 @@
+import { CategoryComponent } from './products/category/category.component';
+
 import { MenuItemComponent } from './menu/menu-item/menu-item.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { AngularMaterialModule } from './angular-material/angular-material.module';
@@ -15,7 +17,11 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { MenuComponent } from './menu/menu.component';
 import { ProductsComponent } from './products/products.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
-import { CategoryComponent } from './category/category.component';
+import { FilterProductPipe } from './pipes/filter-product.pipe';
+import { FormsModule } from '@angular/forms';
+import { MyCartComponent } from './my-cart/my-cart.component';
+import { ShoppingCartComponent, BottomConfirm, purchaseConfirm } from './shopping-cart/shopping-cart.component';
+
 
 
 @NgModule({
@@ -30,16 +36,23 @@ import { CategoryComponent } from './category/category.component';
     ProductsComponent,
     ProductDetailComponent,
     MenuItemComponent,
-    CategoryComponent
+    CategoryComponent,
+    FilterProductPipe,
+    MyCartComponent,
+    ShoppingCartComponent,
+    BottomConfirm,
+    purchaseConfirm
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AngularMaterialModule,
     FlexLayoutModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
+  entryComponents:[BottomConfirm,purchaseConfirm],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
